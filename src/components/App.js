@@ -56,7 +56,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <SchoolTable schools={this.state.schools} />
+        <SchoolTable schools={this.state.schools} programs={this.state.programs} />
       </div>
     );
   }
