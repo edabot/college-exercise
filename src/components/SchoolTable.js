@@ -4,6 +4,18 @@ import ReactTable from "react-table";
 import schoolData from '../data/schoolInfo'
 import "react-table/react-table.css";
 
+  function displayUrl(url) {
+    let thisUrl = url
+    if ( !url.startsWith('http') ) {
+      thisUrl = 'http://' + thisUrl
+    }
+    return(
+      <a href={thisUrl} className='school-url'>
+        {url}
+      </a>
+    )
+  }
+
 class SchoolTable extends Component {
 
   schoolDetail(school) {
@@ -69,6 +81,7 @@ class SchoolTable extends Component {
     }
   }
 
+
   render() {
     const data = this.props.schools
     return (
@@ -88,7 +101,12 @@ class SchoolTable extends Component {
             },
             {
               Header: 'website',
-              accessor: 'INSTURL'
+              accessor: 'INSTURL',
+              Cell: row => (
+                <span>
+                  {displayUrl(row.value)}
+                </span>
+              )
             },
           ]}
 

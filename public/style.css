@@ -24,6 +24,9 @@
   max-width: 800px;
   margin: 0 auto; }
 
+.school-url {
+  text-decoration: none; }
+
 body {
   margin: 0;
   padding: 0;
