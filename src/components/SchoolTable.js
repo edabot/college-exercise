@@ -10,6 +10,9 @@ class SchoolTable extends Component {
     return (
       <div>
         <ReactTable data={data}
+          filterable
+          defaultFilterMethod={(filter, row) =>
+            String(row[filter.id]).toLowerCase().includes(filter.value.toLowerCase())}
           columns={[
             {
               Header: 'School Name',
@@ -24,6 +27,7 @@ class SchoolTable extends Component {
               accessor: 'INSTURL'
             },
           ]}
+
           defaultPageSize={10}
           className="-striped -highlight"
         />
