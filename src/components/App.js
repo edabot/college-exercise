@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SchoolTable from './SchoolTable';
 
 function loadJSON(callback, url) {
   var xobj = new XMLHttpRequest();
@@ -20,14 +21,6 @@ function cleanResponse(response) {
   let lastStart = response.lastIndexOf(', {')
   console.log('response was incomplete')
   return response.substring(0, lastStart) + ']'
-}
-
-class School extends Component {
-  render() {
-    return (
-      <div>school</div>
-    )
-  }
 }
 
 class App extends Component {
@@ -63,7 +56,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        {this.state.schools.map(school => <School key={school.INSTNM}school={school}/>)}
+        <SchoolTable schools={this.state.schools} />
       </div>
     );
   }
