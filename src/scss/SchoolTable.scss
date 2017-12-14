@@ -14,3 +14,17 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+.school-detail {
+  padding: 20px;
+  text-align: left;
+  div:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  .school-programs {
+    margin-top: 20px;
+    ul li {
+      list-style: none;
+    }
+  }
+}

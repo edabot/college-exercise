@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  position: relative; }
+  position: relative;
+  margin: 2rem; }
 
 .App-header {
   background-color: #222;
@@ -32,6 +33,16 @@
   font-weight: 700;
   font-size: 18px;
   cursor: pointer; }
+
+.school-detail {
+  padding: 20px;
+  text-align: left; }
+  .school-detail div:not(:last-child) {
+    margin-bottom: 10px; }
+  .school-detail .school-programs {
+    margin-top: 20px; }
+    .school-detail .school-programs ul li {
+      list-style: none; }
 
 body {
   margin: 0;
