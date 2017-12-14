@@ -140,7 +140,14 @@ class SchoolTable extends Component {
                 <div className='school-checkbox' onClick={this.onClick.bind(this)} id={row.original.INSTNM} value={row.value} >
                   {row.value ? '☑': `☐`}
                 </div>
-              )
+              ),
+              Filter: ({ filter, onChange }) => <div></div>,
+              sortMethod: (a, b) => {
+                 if (a === b) {
+                   return 1;
+                 }
+                 return a ? -1 : 1;
+               }
             },
           ]}
 
