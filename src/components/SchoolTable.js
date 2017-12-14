@@ -16,7 +16,24 @@ import "react-table/react-table.css";
     )
   }
 
+  function addSelections(data) {
+    let result = []
+    data.forEach( datum => {
+      let newDatum = Object.assign({}, datum)
+      newDatum.selected = false
+      result.push(newDatum)
+    })
+    return result
+  }
+
 class SchoolTable extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: addSelections(this.props.schools)
+    };
+  }
 
   schoolDetail(school) {
     return (
@@ -81,9 +98,17 @@ class SchoolTable extends Component {
     }
   }
 
+  onClick(e) {
+    let idx = this.state.data.findIndex( item => item.INSTNM === e.target.id)
+    let newObject = Object.assign({}, this.state.data[idx]),
+    newData = this.state.data.slice()
+    newObject.selected = !this.state.data[idx].selected
+    newData[idx] = newObject
+    this.setState({data: newData})
+  }
 
   render() {
-    const data = this.props.schools
+    const data = this.state.data
     return (
       <div className="school-table">
         <ReactTable data={data}
@@ -106,6 +131,15 @@ class SchoolTable extends Component {
                 <span>
                   {displayUrl(row.value)}
                 </span>
+              )
+            },
+            {
+              Header: 'selected',
+              accessor: 'selected',
+              Cell: row => (
+                <div className='school-checkbox' onClick={this.onClick.bind(this)} id={row.original.INSTNM} value={row.value} >
+                  {row.value ? '☑': `☐`}
+                </div>
               )
             },
           ]}

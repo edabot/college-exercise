@@ -28,8 +28,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      schools: [],
-      programs: {}
+      schools: undefined,
+      programs: undefined
     };
 
     this.loadPrograms = this.loadPrograms.bind(this)
@@ -50,13 +50,19 @@ class App extends Component {
     this.setState({schools: JSON.parse(cleanedResponse)})
   }
 
+  displaySchoolTable() {
+    if ( this.state.schools && this.state.programs ) {
+      return <SchoolTable schools={this.state.schools} programs={this.state.programs} />
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <SchoolTable schools={this.state.schools} programs={this.state.programs} />
+        {this.displaySchoolTable()}
       </div>
     );
   }
